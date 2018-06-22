@@ -2,9 +2,10 @@ object Form1: TForm1
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
   Caption = 'JBCheckSum'
-  ClientHeight = 350
-  ClientWidth = 441
+  ClientHeight = 331
+  ClientWidth = 451
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -37,7 +38,7 @@ object Form1: TForm1
   end
   object Label3: TLabel
     Left = 357
-    Top = 302
+    Top = 296
     Width = 75
     Height = 13
     Caption = 'By BoscoBecker'
@@ -52,7 +53,7 @@ object Form1: TForm1
   end
   object Image1: TImage
     Left = 127
-    Top = 222
+    Top = 216
     Width = 121
     Height = 93
     Picture.Data = {
