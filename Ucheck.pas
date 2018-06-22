@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs,IdHashMessageDigest, StdCtrls;
+  Dialogs,IdHashMessageDigest, StdCtrls, pngimage, ExtCtrls;
 
 type
   TForm1 = class(TForm)
@@ -18,6 +18,7 @@ type
     OpenDialog1: TOpenDialog;
     lblValidor: TLabel;
     Label3: TLabel;
+    Image1: TImage;
     procedure Button1Click(Sender: TObject);
     procedure ckComparerClick(Sender: TObject);
     procedure edtCompararChange(Sender: TObject);
