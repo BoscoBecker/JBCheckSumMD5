@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/06/21 23:58:18.417.pas,C:\Users\João Bosco\Documents\RAD Studio\Projects\Unit1.pas=C:\Users\João Bosco\Desktop\JBCheckMD5\Ucheck.pas</Transaction>
+    <Transaction>2018/06/21 23:58:18.417.dfm,C:\Users\João Bosco\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\João Bosco\Desktop\JBCheckMD5\Ucheck.dfm</Transaction>
+    <Transaction>2018/06/21 23:58:34.110.dproj,C:\Users\João Bosco\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\João Bosco\Desktop\JBCheckMD5\JBCheck.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
