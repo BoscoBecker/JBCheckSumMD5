@@ -87,6 +87,7 @@ end;
 
 procedure TForm1.compare;
 begin
+  edtComparar.Text:= Trim(edtComparar.Text);
   if UpperCase(editResult.Text) = UpperCase(edtComparar.Text) then
   begin
    lblValidor.Font.Color:= clGreen;
