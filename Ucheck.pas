@@ -19,6 +19,7 @@ type
     lblValidor: TLabel;
     Label3: TLabel;
     Image1: TImage;
+    lblhash: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure ckComparerClick(Sender: TObject);
     procedure edtCompararChange(Sender: TObject);
@@ -31,7 +32,19 @@ type
   procedure compare();
   public
     { Public declarations }
+
+
   end;
+
+  TMinhaThread = class(TThread)
+  private
+
+  protected
+    procedure Execute; override;
+  public
+    constructor Create();
+
+end;
 
 var
   Form1: TForm1;
@@ -40,48 +53,75 @@ implementation
 
 {$R *.dfm}
 
-procedure TForm1.Button1Click(Sender: TObject);
+constructor TMinhaThread.Create();
 begin
-  if editArquivo.Text = EmptyStr then
+  inherited Create(True);
+
+  { Chama o contrutor herdado. Ele irá temporariamente colocar o
+    thread em estado de espera para depois executá-lo. }
+  FreeOnTerminate := True; // Libera da memoria o objeto após terminar.
+
+  { Configura sua prioridade na lista de processos do Sistema operacional. }
+  Priority := TpLower;
+
+  Resume; // Inicia o Thread.
+end;
+
+ procedure TMinhaThread.Execute;
+begin
+  inherited;
+  if Form1.editArquivo.Text = EmptyStr then
   Begin
-    if OpenDialog1.Execute then
-    editArquivo.Text:= OpenDialog1.FileName;
-    if editArquivo.Text = EmptyStr then
+    if Form1.OpenDialog1.Execute then
+      Form1.editArquivo.Text := Form1.OpenDialog1.FileName;
+   if Form1.editArquivo.Text = EmptyStr then
      begin
        Application.MessageBox('O diretorio não foi informado ou o arquivo não foi selecionado!',
        'Diretório vazio', MB_ICONINFORMATION+MB_OK);
-       if editArquivo.CanFocus  then
-         edtComparar.SetFocus;
+       if Form1.editArquivo.CanFocus  then
+         Form1.edtComparar.SetFocus;
        exit;
      end;
-    editResult.text:= MD5(editArquivo.Text);
+    Form1.editResult.text:= Form1.MD5(Form1.editArquivo.Text);
   End
   else
   Begin
-    if FileExists(editArquivo.Text) then
-      editResult.text:= MD5(editArquivo.Text)
+    if FileExists(Form1.editArquivo.Text) then
+      Form1.editResult.text:= Form1.MD5(Form1.editArquivo.Text)
     else
     begin
        Application.MessageBox('Diretorio Inválido',
        'Inválido', MB_ICONINFORMATION+MB_OK);
-       if editArquivo.CanFocus  then
-         edtComparar.SetFocus;
+       if Form1.editArquivo.CanFocus  then
+         Form1.edtComparar.SetFocus;
        exit;
 
     end;
   End;
+end;
 
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  vThread : TMinhaThread;
+begin
+  vThread := TMinhaThread.Create;
+
+  vThread.Execute;
 end;
 
 procedure TForm1.ckComparerClick(Sender: TObject);
 begin
   if ckComparer.State = cbChecked then
+  begin
     edtComparar.Visible:= true;
+    lblhash.Visible := True;
+  end;
 
   if ckComparer.State = cbUnchecked then
    begin
      edtComparar.Visible  := false;
      lblValidor.Caption   := '';
+     lblhash.Visible      := False;
    end;
 end;
 

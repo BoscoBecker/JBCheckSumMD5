@@ -1215,6 +1215,14 @@ object Form1: TForm1
       81D10000000049454E44AE426082}
     Stretch = True
   end
+  object lblhash: TLabel
+    Left = 24
+    Top = 138
+    Width = 276
+    Height = 13
+    Caption = 'Cole aqui seu Hash MD5 para comparar com o Hash aicma'
+    Visible = False
+  end
   object editArquivo: TEdit
     Left = 24
     Top = 64
