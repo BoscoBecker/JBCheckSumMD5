@@ -1,11 +1,11 @@
-object Form1: TForm1
+object FormVerificadorMd5: TFormVerificadorMd5
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu]
+  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsDialog
-  Caption = 'JBCheckSum'
-  ClientHeight = 331
-  ClientWidth = 451
+  Caption = 'Verificador de soma (checksum) MD5 -By BoscoBecker'
+  ClientHeight = 285
+  ClientWidth = 475
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,29 +16,37 @@ object Form1: TForm1
   Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
+  object shp1: TShape
+    Left = 0
+    Top = 0
+    Width = 475
+    Height = 285
+    Align = alClient
+    ExplicitTop = -8
+  end
   object Label1: TLabel
     Left = 24
-    Top = 45
+    Top = 96
     Width = 240
     Height = 13
     Caption = 'Informe um diret'#243'rio ou clique no bot'#227'o selecionar'
   end
   object Label2: TLabel
     Left = 24
-    Top = 97
+    Top = 145
     Width = 48
     Height = 13
     Caption = 'Hash MD5'
   end
   object lblValidor: TLabel
-    Left = 67
-    Top = 185
-    Width = 3
+    Left = 313
+    Top = 218
+    Width = 62
     Height = 13
   end
   object Label3: TLabel
-    Left = 357
-    Top = 296
+    Left = 390
+    Top = 264
     Width = 75
     Height = 13
     Caption = 'By BoscoBecker'
@@ -52,10 +60,13 @@ object Form1: TForm1
     ParentFont = False
   end
   object Image1: TImage
-    Left = 127
-    Top = 216
-    Width = 121
-    Height = 93
+    Left = 386
+    Top = 8
+    Width = 79
+    Height = 57
+    Cursor = crHelp
+    Hint = 'Clique aqui para saber mais sobre  CheckSum e MD5'
+    ParentShowHint = False
     Picture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D494844520000012C0000
       012C0806000000797D8E7500000006624B474400FF00FF00FFA0BDA793000090
@@ -1213,59 +1224,161 @@ object Form1: TForm1
       046BE3CC0D810996DA62CA52FDCE8E192456E98ECEA42985E170381CA7800B16
       87C3711AB86071381CA7810B1687C3711AB86071381CA7E1FF01575A914667C4
       81D10000000049454E44AE426082}
+    ShowHint = True
     Stretch = True
+    OnClick = Image1Click
   end
   object lblhash: TLabel
     Left = 24
-    Top = 138
+    Top = 195
     Width = 276
     Height = 13
     Caption = 'Cole aqui seu Hash MD5 para comparar com o Hash aicma'
     Visible = False
   end
+  object lbl1: TLabel
+    Left = 12
+    Top = 25
+    Width = 350
+    Height = 25
+    Caption = 'Verificador de soma (checksum) MD5'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object ToggleSwitch1: TToggleSwitch
+    Left = 313
+    Top = 165
+    Width = 152
+    Height = 20
+    StateCaptions.CaptionOn = 'Comparar Hash'
+    StateCaptions.CaptionOff = 'N'#227'o Comparar Hash'
+    TabOrder = 6
+    OnClick = ToggleSwitch1Click
+  end
+  object actvtyndctr1: TActivityIndicator
+    Left = 313
+    Top = 76
+    IndicatorSize = aisSmall
+  end
   object editArquivo: TEdit
     Left = 24
-    Top = 64
+    Top = 115
     Width = 281
     Height = 21
-    TabOrder = 0
-  end
-  object Button1: TButton
-    Left = 320
-    Top = 55
-    Width = 112
-    Height = 40
-    Caption = 'Selecionar Arquivo'
     TabOrder = 1
-    OnClick = Button1Click
+    OnChange = editArquivoChange
+  end
+  object btnSelecionarArquivo: TButton
+    Left = 311
+    Top = 106
+    Width = 122
+    Height = 39
+    Caption = 'Arquivo ...'
+    TabOrder = 0
+    OnClick = btnSelecionarArquivoClick
   end
   object editResult: TEdit
     Left = 23
-    Top = 116
+    Top = 164
     Width = 281
     Height = 21
     ReadOnly = True
     TabOrder = 2
   end
-  object ckComparer: TCheckBox
-    Left = 335
-    Top = 117
-    Width = 66
-    Height = 19
-    Caption = 'Comparar'
-    TabOrder = 3
-    OnClick = ckComparerClick
-  end
   object edtComparar: TEdit
     Left = 24
-    Top = 158
+    Top = 215
     Width = 281
     Height = 21
-    TabOrder = 4
+    TabOrder = 3
     Visible = False
     OnChange = edtCompararChange
     OnClick = edtCompararClick
     OnExit = edtCompararExit
+  end
+  object pnlSobre: TPanel
+    Left = 8
+    Top = 8
+    Width = 457
+    Height = 269
+    Caption = 'pnlSobre'
+    TabOrder = 4
+    Visible = False
+    object mmo1: TMemo
+      Left = 1
+      Top = 1
+      Width = 455
+      Height = 267
+      Align = alClient
+      Lines.Strings = (
+        #201' bom saber !!!'
+        'Sobre soma de verifica'#231#227'o'
+        'Checksum ou soma de verifica'#231#227'o '#233' um c'#243'digo usado para '
+        'verificar a'
+        ' integridade de dados transmitidos atrav'#233's de um canal com '
+        'ru'#237'dos ou '
+        'armazenados em algum meio por algum tempo.'
+        ''
+        'Funcionamento'
+        'Isto '#233' feito calculando a soma de verifica'#231#227'o dos dados antes '
+        'do envio ou do '
+        'armazenamento deles, '
+        'e recalcul'#225'-los ao receb'#234'-los ou recuper'#225'-los do '
+        'armazenamento. '
+        'Se o valor obtido '#233' o mesmo, as informa'#231#245'es n'#227'o sofreram '
+        'altera'#231#245'es e portanto '
+        'n'#227'o est'#227'o corrompidas.'
+        ''
+        'Formas mais simplificadas destas somas s'#227'o vulner'#225'veis por '
+        'n'#227'o detectarem '
+        'algumas formas de falha. '
+        'A simples soma dos valores dos caracteres por exemplo '#233' '
+        'vulner'#225'vel a troca de '
+        'ordem dos mesmos pela comutatividade da soma.'
+        ' H'#225' formas mais elaboradas de se calcular estas somas que '
+        'resolvem estes '
+        'problemas, '
+        'como por exemplo, o Cyclic Redundancy Check (verifica'#231#227'o de '
+        'redund'#226'ncia c'#237'clica) '
+        'ou '
+        'CRC muito utilizados para detec'#231#227'o de falha atrav'#233's da divis'#227'o '
+        'de polin'#244'mios.'
+        ''
+        'Sobre o MD5'
+        'O MD5 (Message-Digest algorithm 5) '#233' uma fun'#231#227'o de '
+        'dispers'#227'o criptogr'#225'fica'
+        ' (ou fun'#231#227'o hash criptogr'#225'fica) de 128 bits unidirecional '
+        'desenvolvido pela'
+        ' RSA Data Security, Inc., descrito na RFC 1321, e muito '
+        'utilizado por softwares com protocolo ponto-a-ponto'
+        
+          ' (P2P, ou Peer-to-Peer, em ingl'#234's) na verifica'#231#227'o de integridade' +
+          ' '
+        'de arquivos e logins.'
+        ''
+        ''
+        'Fonte:https://pt.wikipedia.org/wiki/Soma_de_verifica'
+        '%C3%A7%C3%A3o'
+        'Fonte:https://pt.wikipedia.org/wiki/MD5')
+      ReadOnly = True
+      ScrollBars = ssVertical
+      TabOrder = 0
+      ExplicitLeft = 0
+      ExplicitTop = 0
+    end
+    object btnFechar: TButton
+      Left = 357
+      Top = 233
+      Width = 75
+      Height = 25
+      Caption = '&Fechar'
+      TabOrder = 1
+      OnClick = btnFecharClick
+    end
   end
   object OpenDialog1: TOpenDialog
     Left = 368

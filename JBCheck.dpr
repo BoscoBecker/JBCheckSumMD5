@@ -2,13 +2,13 @@ program JBCheck;
 
 uses
   Forms,
-  Ucheck in 'Ucheck.pas' {Form1};
+  Ucheck in 'Ucheck.pas' {FormVerificadorMd5};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormVerificadorMd5, FormVerificadorMd5);
   Application.Run;
 end.
