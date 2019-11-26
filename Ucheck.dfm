@@ -26,22 +26,22 @@ object FormVerificadorMd5: TFormVerificadorMd5
   end
   object Label1: TLabel
     Left = 24
-    Top = 96
+    Top = 134
     Width = 240
     Height = 13
     Caption = 'Informe um diret'#243'rio ou clique no bot'#227'o selecionar'
   end
   object Label2: TLabel
     Left = 24
-    Top = 145
+    Top = 183
     Width = 48
     Height = 13
     Caption = 'Hash MD5'
   end
   object lblValidor: TLabel
-    Left = 313
-    Top = 218
-    Width = 62
+    Left = 311
+    Top = 256
+    Width = 52
     Height = 13
   end
   object Label3: TLabel
@@ -1224,13 +1224,14 @@ object FormVerificadorMd5: TFormVerificadorMd5
       046BE3CC0D810996DA62CA52FDCE8E192456E98ECEA42985E170381CA7800B16
       87C3711AB86071381CA7810B1687C3711AB86071381CA7E1FF01575A914667C4
       81D10000000049454E44AE426082}
+    Proportional = True
     ShowHint = True
     Stretch = True
     OnClick = Image1Click
   end
   object lblhash: TLabel
     Left = 24
-    Top = 195
+    Top = 233
     Width = 276
     Height = 13
     Caption = 'Cole aqui seu Hash MD5 para comparar com o Hash aicma'
@@ -1249,9 +1250,21 @@ object FormVerificadorMd5: TFormVerificadorMd5
     Font.Style = []
     ParentFont = False
   end
+  object lblStatus: TLabel
+    Left = 23
+    Top = 76
+    Width = 265
+    Height = 24
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
   object ToggleSwitch1: TToggleSwitch
     Left = 313
-    Top = 165
+    Top = 203
     Width = 152
     Height = 20
     StateCaptions.CaptionOn = 'Comparar Hash'
@@ -1266,7 +1279,7 @@ object FormVerificadorMd5: TFormVerificadorMd5
   end
   object editArquivo: TEdit
     Left = 24
-    Top = 115
+    Top = 153
     Width = 281
     Height = 21
     TabOrder = 1
@@ -1274,7 +1287,7 @@ object FormVerificadorMd5: TFormVerificadorMd5
   end
   object btnSelecionarArquivo: TButton
     Left = 311
-    Top = 106
+    Top = 144
     Width = 122
     Height = 39
     Caption = 'Arquivo ...'
@@ -1283,7 +1296,7 @@ object FormVerificadorMd5: TFormVerificadorMd5
   end
   object editResult: TEdit
     Left = 23
-    Top = 164
+    Top = 202
     Width = 281
     Height = 21
     ReadOnly = True
@@ -1291,13 +1304,12 @@ object FormVerificadorMd5: TFormVerificadorMd5
   end
   object edtComparar: TEdit
     Left = 24
-    Top = 215
+    Top = 253
     Width = 281
     Height = 21
     TabOrder = 3
     Visible = False
     OnChange = edtCompararChange
-    OnClick = edtCompararClick
     OnExit = edtCompararExit
   end
   object pnlSobre: TPanel
@@ -1367,7 +1379,7 @@ object FormVerificadorMd5: TFormVerificadorMd5
       ReadOnly = True
       ScrollBars = ssVertical
       TabOrder = 0
-      ExplicitLeft = 0
+      ExplicitLeft = 4
       ExplicitTop = 0
     end
     object btnFechar: TButton
@@ -1381,7 +1393,11 @@ object FormVerificadorMd5: TFormVerificadorMd5
     end
   end
   object OpenDialog1: TOpenDialog
-    Left = 368
-    Top = 8
+    Left = 384
+    Top = 72
+  end
+  object IdAntiFreeze1: TIdAntiFreeze
+    Left = 344
+    Top = 72
   end
 end

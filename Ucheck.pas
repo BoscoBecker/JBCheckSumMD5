@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs,IdHashMessageDigest, StdCtrls, pngimage, ExtCtrls, Vcl.WinXCtrls;
+  Dialogs,IdHashMessageDigest, StdCtrls, pngimage, ExtCtrls, Vcl.WinXCtrls,
+  IdBaseComponent, IdAntiFreezeBase, IdAntiFreeze;
 
 type
   TFormVerificadorMd5 = class(TForm)
@@ -26,9 +27,10 @@ type
     btnFechar: TButton;
     actvtyndctr1: TActivityIndicator;
     ToggleSwitch1: TToggleSwitch;
+    lblStatus: TLabel;
+    IdAntiFreeze1: TIdAntiFreeze;
     procedure btnSelecionarArquivoClick(Sender: TObject);
     procedure edtCompararChange(Sender: TObject);
-    procedure edtCompararClick(Sender: TObject);
     procedure edtCompararExit(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure Image1Click(Sender: TObject);
@@ -36,23 +38,22 @@ type
     procedure editArquivoChange(Sender: TObject);
   private
     { Private declarations }
-  function MD5(const fileName : string) : string;
-
   procedure compare();
+  function GerarHashMD5(const fileName : string) : string;
+
   public
     { Public declarations }
 
 
   end;
 
-  TMinhaThread = class(TThread)
-  private
+TMinhaThread = class(TThread)
+   private
 
-  protected
-    procedure Execute; override;
-  public
-    constructor Create();
-
+   protected
+     procedure Execute; override;
+   public
+     constructor Create();
 end;
 
 var
@@ -72,18 +73,23 @@ begin
 
   { Configura sua prioridade na lista de processos do Sistema operacional. }
   Priority := tpLower;
-
-
   //Start; // Inicia o Thread.
 end;
 
- procedure TMinhaThread.Execute;
+procedure TMinhaThread.Execute;
 begin
   inherited;
-
-  FormVerificadorMd5.actvtyndctr1.Animate := True;
-  FormVerificadorMd5.editResult.text:= FormVerificadorMd5.MD5(FormVerificadorMd5.editArquivo.Text);
-  FormVerificadorMd5.actvtyndctr1.Animate := False;
+  Try
+    FormVerificadorMd5.actvtyndctr1.Animate := True;
+    FormVerificadorMd5.editResult.text:= FormVerificadorMd5.GerarHashMD5(
+      FormVerificadorMd5.editArquivo.Text);
+    FormVerificadorMd5.actvtyndctr1.Animate := False;
+    FormVerificadorMd5.lblStatus.Caption := 'Verificação finalizada. ';
+    FormVerificadorMd5.lblStatus.Refresh;
+    Finally
+    FormVerificadorMd5.lblStatus.Caption := '';
+    FormVerificadorMd5.lblStatus.Refresh;
+  End;
 end;
 
 procedure TFormVerificadorMd5.btnFecharClick(Sender: TObject);
@@ -95,15 +101,13 @@ procedure TFormVerificadorMd5.btnSelecionarArquivoClick(Sender: TObject);
 var
   vThread : TMinhaThread;
 begin
+  editArquivo.Text := '';
   actvtyndctr1.Animate := True;
+  lblStatus.Caption := '';
+  lblStatus.Refresh;
 
-  if (FormVerificadorMd5.editArquivo.Text = EmptyStr)
-     or (not FileExists(FormVerificadorMd5.editArquivo.Text,True))
-  then
-  begin
-    if FormVerificadorMd5.OpenDialog1.Execute then
-      FormVerificadorMd5.editArquivo.Text := FormVerificadorMd5.OpenDialog1.FileName;
-  end;
+  if FormVerificadorMd5.OpenDialog1.Execute then
+    FormVerificadorMd5.editArquivo.Text := FormVerificadorMd5.OpenDialog1.FileName;
 
   if FormVerificadorMd5.editArquivo.Text = EmptyStr then
   begin
@@ -122,7 +126,13 @@ begin
     end;
   end;
 
+  lblStatus.Caption := 'Arquivo selecionado.';
+  lblStatus.Refresh;
+
   actvtyndctr1.Animate := False;
+
+  lblStatus.Caption := 'Iniciando Verificação MD5';
+  lblStatus.Refresh;
 
   vThread := TMinhaThread.Create;
   vThread.Start;
@@ -130,18 +140,16 @@ end;
 
 procedure TFormVerificadorMd5.compare;
 begin
-  //edtComparar.Text:= Trim(edtComparar.Text);
-
   if UpperCase(Trim(editResult.Text)) = UpperCase(Trim(edtComparar.Text)) then
   begin
-   lblValidor.Font.Color:= clGreen;
-   lblValidor.Font.Style:= [fsBold];
-   lblValidor.Caption   := 'O arquivo está integro';
+    lblValidor.Font.Color:= clGreen;
+    lblValidor.Font.Style:= [fsBold];
+    lblValidor.Caption   := 'O arquivo está integro';
   end else
   begin
-   lblValidor.Font.Color:= clred;
-   lblValidor.Font.Style:= [fsBold];
-   lblValidor.Caption   := 'O arquivo não está integro';
+    lblValidor.Font.Color:= clred;
+    lblValidor.Font.Style:= [fsBold];
+    lblValidor.Caption   := 'O arquivo não está integro';
   end;
 
   edtComparar.Text:= UpperCase(edtComparar.Text);
@@ -179,11 +187,6 @@ begin
   compare;
 end;
 
-procedure TFormVerificadorMd5.edtCompararClick(Sender: TObject);
-begin
-//  compare
-end;
-
 procedure TFormVerificadorMd5.edtCompararExit(Sender: TObject);
 begin
   compare;
@@ -194,7 +197,7 @@ begin
   pnlSobre.Visible := True;
 end;
 
-function TFormVerificadorMd5.MD5(const fileName : string) : string;
+function TFormVerificadorMd5.GerarHashMD5(const fileName : string) : string;
 var
   idmd5 : TIdHashMessageDigest5;
   fs : TFileStream;
