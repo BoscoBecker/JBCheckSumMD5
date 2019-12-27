@@ -140,6 +140,9 @@ end;
 
 procedure TFormVerificadorMd5.compare;
 begin
+  if (editArquivo.Text = EmptyStr ) or (edtComparar.Text = EmptyStr) then
+    exit
+  else
   if UpperCase(Trim(editResult.Text)) = UpperCase(Trim(edtComparar.Text)) then
   begin
     lblValidor.Font.Color:= clGreen;

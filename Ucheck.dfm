@@ -3,9 +3,11 @@ object FormVerificadorMd5: TFormVerificadorMd5
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsDialog
-  Caption = 'Verificador de soma (checksum) MD5 -By BoscoBecker'
+  Caption = 
+    'Gerador de Hash, baseado em checksum (Message-Digest algorithm 5' +
+    ')'
   ClientHeight = 285
-  ClientWidth = 475
+  ClientWidth = 474
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,10 +21,12 @@ object FormVerificadorMd5: TFormVerificadorMd5
   object shp1: TShape
     Left = 0
     Top = 0
-    Width = 475
+    Width = 474
     Height = 285
     Align = alClient
-    ExplicitTop = -8
+    ExplicitLeft = 5
+    ExplicitTop = 6
+    ExplicitWidth = 475
   end
   object Label1: TLabel
     Left = 24
@@ -40,8 +44,8 @@ object FormVerificadorMd5: TFormVerificadorMd5
   end
   object lblValidor: TLabel
     Left = 311
-    Top = 256
-    Width = 52
+    Top = 234
+    Width = 46
     Height = 13
   end
   object Label3: TLabel
@@ -60,9 +64,9 @@ object FormVerificadorMd5: TFormVerificadorMd5
     ParentFont = False
   end
   object Image1: TImage
-    Left = 386
+    Left = 404
     Top = 8
-    Width = 79
+    Width = 61
     Height = 57
     Cursor = crHelp
     Hint = 'Clique aqui para saber mais sobre  CheckSum e MD5'
@@ -1253,7 +1257,7 @@ object FormVerificadorMd5: TFormVerificadorMd5
   object lblStatus: TLabel
     Left = 23
     Top = 76
-    Width = 265
+    Width = 6
     Height = 24
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -1264,7 +1268,7 @@ object FormVerificadorMd5: TFormVerificadorMd5
   end
   object ToggleSwitch1: TToggleSwitch
     Left = 313
-    Top = 203
+    Top = 189
     Width = 152
     Height = 20
     StateCaptions.CaptionOn = 'Comparar Hash'
@@ -1313,59 +1317,69 @@ object FormVerificadorMd5: TFormVerificadorMd5
     OnExit = edtCompararExit
   end
   object pnlSobre: TPanel
-    Left = 8
-    Top = 8
-    Width = 457
-    Height = 269
+    Left = 0
+    Top = 0
+    Width = 474
+    Height = 285
+    Align = alClient
     Caption = 'pnlSobre'
     TabOrder = 4
     Visible = False
+    ExplicitLeft = -352
+    ExplicitTop = 6
+    ExplicitWidth = 457
+    ExplicitHeight = 269
     object mmo1: TMemo
       Left = 1
       Top = 1
-      Width = 455
-      Height = 267
+      Width = 472
+      Height = 283
       Align = alClient
       Lines.Strings = (
-        #201' bom saber !!!'
+        
+          '###                                  '#201' bom saber                ' +
+          '                       ###'
+        ''
+        ''
         'Sobre soma de verifica'#231#227'o'
-        'Checksum ou soma de verifica'#231#227'o '#233' um c'#243'digo usado para '
-        'verificar a'
+        ''
+        
+          'Checksum ou soma de verifica'#231#227'o '#233' um c'#243'digo usado para verificar' +
+          ' a'
         ' integridade de dados transmitidos atrav'#233's de um canal com '
-        'ru'#237'dos ou '
-        'armazenados em algum meio por algum tempo.'
+        'ru'#237'dos ou armazenados em algum meio por algum tempo.'
         ''
         'Funcionamento'
+        ''
         'Isto '#233' feito calculando a soma de verifica'#231#227'o dos dados antes '
-        'do envio ou do '
-        'armazenamento deles, '
+        'do envio ou do armazenamento deles, '
         'e recalcul'#225'-los ao receb'#234'-los ou recuper'#225'-los do '
         'armazenamento. '
         'Se o valor obtido '#233' o mesmo, as informa'#231#245'es n'#227'o sofreram '
-        'altera'#231#245'es e portanto '
-        'n'#227'o est'#227'o corrompidas.'
+        'altera'#231#245'es e portanto n'#227'o est'#227'o corrompidas.'
         ''
         'Formas mais simplificadas destas somas s'#227'o vulner'#225'veis por '
-        'n'#227'o detectarem '
-        'algumas formas de falha. '
+        'n'#227'o detectarem algumas formas de falha. '
         'A simples soma dos valores dos caracteres por exemplo '#233' '
-        'vulner'#225'vel a troca de '
-        'ordem dos mesmos pela comutatividade da soma.'
+        
+          'vulner'#225'vel a troca de ordem dos mesmos pela comutatividade da so' +
+          'ma.'
         ' H'#225' formas mais elaboradas de se calcular estas somas que '
-        'resolvem estes '
-        'problemas, '
-        'como por exemplo, o Cyclic Redundancy Check (verifica'#231#227'o de '
-        'redund'#226'ncia c'#237'clica) '
-        'ou '
-        'CRC muito utilizados para detec'#231#227'o de falha atrav'#233's da divis'#227'o '
+        
+          'resolvem estes problemas, como por exemplo, o Cyclic Redundancy ' +
+          'Check (verifica'#231#227'o de '
+        
+          'redund'#226'ncia c'#237'clica) ou CRC muito utilizados para detec'#231#227'o de fa' +
+          'lha atrav'#233's da divis'#227'o '
         'de polin'#244'mios.'
         ''
-        'Sobre o MD5'
-        'O MD5 (Message-Digest algorithm 5) '#233' uma fun'#231#227'o de '
-        'dispers'#227'o criptogr'#225'fica'
+        'Sobre o MD5 (Message-Digest algorithm 5) '
+        ''
+        'O MD5 '#233' uma fun'#231#227'o de dispers'#227'o criptogr'#225'fica'
         ' (ou fun'#231#227'o hash criptogr'#225'fica) de 128 bits unidirecional '
-        'desenvolvido pela'
-        ' RSA Data Security, Inc., descrito na RFC 1321, e muito '
+        
+          'desenvolvido pela RSA Data Security, Inc., descrito na RFC 1321,' +
+          ' e muito '
         'utilizado por softwares com protocolo ponto-a-ponto'
         
           ' (P2P, ou Peer-to-Peer, em ingl'#234's) na verifica'#231#227'o de integridade' +
@@ -1373,18 +1387,18 @@ object FormVerificadorMd5: TFormVerificadorMd5
         'de arquivos e logins.'
         ''
         ''
-        'Fonte:https://pt.wikipedia.org/wiki/Soma_de_verifica'
-        '%C3%A7%C3%A3o'
-        'Fonte:https://pt.wikipedia.org/wiki/MD5')
+        'Fonte: https://pt.wikipedia.org/wiki/Soma_de_verifica'#231#227'o'
+        'Fonte: https://pt.wikipedia.org/wiki/MD5')
       ReadOnly = True
       ScrollBars = ssVertical
       TabOrder = 0
-      ExplicitLeft = 4
+      ExplicitLeft = -199
       ExplicitTop = 0
+      ExplicitWidth = 473
     end
     object btnFechar: TButton
-      Left = 357
-      Top = 233
+      Left = 381
+      Top = 251
       Width = 75
       Height = 25
       Caption = '&Fechar'
