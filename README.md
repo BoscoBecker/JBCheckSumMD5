@@ -20,7 +20,7 @@ Checksum ou soma de verificação é um código usado para verificar a
  integridade de dados transmitidos através de um canal com 
 ruídos ou armazenados em algum meio por algum tempo.
 
-#Funcionamento
+# Funcionamento
 
 Isto é feito calculando a soma de verificação dos dados antes 
 do envio ou do armazenamento deles, 
@@ -46,7 +46,6 @@ desenvolvido pela RSA Data Security, Inc., descrito na RFC 1321, e muito
 utilizado por softwares com protocolo ponto-a-ponto
  (P2P, ou Peer-to-Peer, em inglês) na verificação de integridade 
 de arquivos e logins.
-
 
 Fonte: https://pt.wikipedia.org/wiki/Soma_de_verificação
 Fonte: https://pt.wikipedia.org/wiki/MD5
