@@ -1,6 +1,6 @@
 # Gerador de Hash MD5, verifica a integridade dos arquivos
 
-![Screenshot](Imagens/printCheckMD5.png)
+![Screenshot](imagens/printCheckMD5.png)
 
 # Features
 * Suporta quase todas as plataformas Windows, incluindo Microsoft Windows 95, 98, 2000, Me, XP, 2003, Vista e Windows 7.
