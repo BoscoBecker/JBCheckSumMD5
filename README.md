@@ -1,4 +1,4 @@
-# Gerador de Hash MD5, verificador de integridade dos arquivos
+# Verificador de integridade de arquivos Hash MD5
 
 ![Screenshot](imagens/printCheckMD5.png)
 
