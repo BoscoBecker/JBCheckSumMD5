@@ -1,53 +1,53 @@
-# Verificador de integridade de arquivos Hash MD5
+# MD5 Hash file integrity checker
 
 ![Screenshot](imagens/printCheckMD5.png)
 
 # Features
-* Suporta quase todas as plataformas Windows, incluindo Microsoft Windows 95, 98, 2000, Me, XP, 2003, Vista e Windows 7.
-* Rápido e multi-threaded. Pode calcular um arquivo de 2 GB a menos de 1 minuto.
+* Supports almost all Windows platforms, including Microsoft Windows 95, 98, 2000, Me, XP, 2003, Vista and Windows 7.
+* Fast and multi-threaded. You can calculate a 2 GB file in less than 1 minute.
 
-* Suporta arquivos grandes com mais de 4 GB.
-* Baixo uso de recursos. Utiliza menos de 5 MB de RAM.
-* Não requer o tempo de execução do .NET instalado. É um arquivo EXE autônomo e a inicialização é rápida. 
-* Suporta verificação do valor MD5 original e do valor MD5 atual.
-* Mais importante, é grátis. Nenhum pacote de spyware ou adware.
-* Tamanho pequeno, uma ferramenta eficaz e minúscula para segurança de dados.
+* Supports large files over 4 GB.
+* Low use of resources. Uses less than 5 MB of RAM.
+* Does not require the .NET runtime installed. It is a stand-alone EXE file and initialization is fast.
+* Supports checking the original MD5 value and the current MD5 value.
+* Most importantly, it's free. No spyware or adware packages.
+* Small size, an effective and tiny tool for data security.
 
 
-# Sobre soma de verificação
+# About checksum
 
-Checksum ou soma de verificação é um código usado para verificar a
- integridade de dados transmitidos através de um canal com 
-ruídos ou armazenados em algum meio por algum tempo.
+Checksum or checksum is a code used to check the
+ integrity of data transmitted over a channel with
+noise or stored in some medium for some time.
 
-# Funcionamento
+# Operation
 
-Isto é feito calculando a soma de verificação dos dados antes 
-do envio ou do armazenamento deles, 
-e recalculá-los ao recebê-los ou recuperá-los do 
-armazenamento. 
-Se o valor obtido é o mesmo, as informações não sofreram 
-alterações e portanto não estão corrompidas.
+This is done by calculating the checksum of the data before
+of shipping or storing them,
+and recalculate them when receiving or retrieving them from
+storage.
+If the value obtained is the same, the information has not suffered
+changes and therefore are not corrupted.
 
-Formas mais simplificadas destas somas são vulneráveis por 
-não detectarem algumas formas de falha. 
-A simples soma dos valores dos caracteres por exemplo é 
-vulnerável a troca de ordem dos mesmos pela comutatividade da soma.
- Há formas mais elaboradas de se calcular estas somas que 
-resolvem estes problemas, como por exemplo, o Cyclic Redundancy Check (verificação de 
-redundância cíclica) ou CRC muito utilizados para detecção de falha através da divisão 
-de polinômios.
+More simplified forms of these sums are vulnerable because
+fail to detect some forms of failure.
+The simple sum of the character values ​​for example is
+vulnerable to changing their order for commutativity of the sum.
+There are more elaborate ways of calculating these sums that
+solve these problems, such as the Cyclic Redundancy Check
+cyclic redundancy) or CRC widely used for fault detection by splitting
+of polynomials.
 
-# Sobre o MD5 (Message-Digest algorithm 5) 
+# About MD5 (Message-Digest algorithm 5)
 
-O MD5 é uma função de dispersão criptográfica
- (ou função hash criptográfica) de 128 bits unidirecional 
-desenvolvido pela RSA Data Security, Inc., descrito na RFC 1321, e muito 
-utilizado por softwares com protocolo ponto-a-ponto
- (P2P, ou Peer-to-Peer, em inglês) na verificação de integridade 
-de arquivos e logins.
+MD5 is a cryptographic dispersion function
+ 128-bit (or cryptographic hash function) unidirectional
+developed by RSA Data Security, Inc., described in RFC 1321, and very
+used by software with a point-to-point protocol
+ (P2P, or Peer-to-Peer, in English) in health check
+files and logins.
 
-Fonte: https://pt.wikipedia.org/wiki/Soma_de_verificação
-Fonte: https://pt.wikipedia.org/wiki/MD5
+Source: https://en.wikipedia.org/wiki/Sum_de_Verificação
+Source: https://pt.wikipedia.org/wiki/MD5
 
 Make with love - @boscobecker
